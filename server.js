@@ -4,6 +4,13 @@ const app = express();
 const bodyParser = require('body-parser');
 const {response} = require("express");
 app.use(bodyParser.urlencoded({extended: true}));
+/*
+npm init
+press enter a shitload
+npm i express body-parser
+ctrl+c
+node server.js
+*/
 
 app.use(express.static(__dirname + "/public"));
 let carList = [];
