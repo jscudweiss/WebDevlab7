@@ -10,7 +10,7 @@ let carList = [];
 app.listen(3000, function () {
     console.log("server started at 3000");
     const rawData = fs.readFileSync(__dirname + "/public/data/data10.json");
-    messageList=JSON.parse(rawData);
+    carList=JSON.parse(rawData);
     console.log(carList);
 });
 
@@ -19,33 +19,40 @@ app.get("/", function (req, res) {
     console.log()
 });
 
-app.post("/forum", (req,res)=> {
+app.get("/new-car", function (req, res) {
+    res.sendFile("/public/new_car.html");
+    console.log()
+});
+
+app.post("/create-new-car", (req,res)=> {
     //console.log(req.body.message);
-    const messageItem = {
-        "name": req.body.name,
-        "email": req.body.email,
+    const carItem = {
+        "stock_num": req.body.stock_num,
+        "make": req.body.make,
+        "model": req.body.model,
         "year": parseInt(req.body.year),
-        "message":req.body.message,
+        "url":req.body.url,
+        "color":req.body.color,
     }
-    messageList.push(messageItem);
-    const messageJSON = JSON.stringify(messageList);
-    console.log(messageJSON);
-    fs.writeFile(__dirname+"/public/data/messages.json", messageJSON, function (err) {
+    carList.push(carItem);
+    const carJSON = JSON.stringify(messageList);
+    console.log(carJSON);
+    fs.writeFile(__dirname+"/public/data/data10.json", carJSON, function (err) {
         if(err){
             console.log("Json writing failed", err);
         }else {
-            res.redirect('/forum');
+            res.redirect('/');
         }
     });
     //res.send("Thank You!");
 })
-app.get('/forum',(req,res)=>{
-    res.sendFile(__dirname+"/public/forum.html");
-})
 
-app.post('/delete-message',(req,res)=>{
-    messageList = messageList.filter((msg)=>{
-        return ((msg.name !== req.body.name) || (msg.message !== req.body.message));
+app.get('/create-new-car',(req,res)=>{
+    res.sendFile(__dirname+"/public/index.html");
+})
+app.post('/delete-car',(req,res)=>{
+    messageList = messageList.filter((car)=>{
+        return ((car.stock_num !== req.body.stock_num) ||(car.make !== req.body.make) || (car.model !== req.body.model) || (car.year !== req.body.year) || (car.price !== req.body.price));
     });
     const messageJSON = JSON.stringify(messageList);
     fs.writeFile(__dirname+"/public/data/messages.json", messageJSON,
@@ -53,7 +60,7 @@ app.post('/delete-message',(req,res)=>{
             if(err){
                 console.log("Json writing failed", err);
             }else {
-                res.redirect('/forum');
+                res.redirect('/index');
             }
         });
 })
