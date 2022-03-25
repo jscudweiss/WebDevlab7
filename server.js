@@ -30,7 +30,6 @@ app.get("/", function (req, res) {
 
 app.get("/new-car", function (req, res) {
     res.sendFile("/public/new_car.html");
-    console.log()
 });
 
 app.post("/create-new-car", (req,res)=> {
@@ -61,7 +60,7 @@ app.get('/create-new-car',(req,res)=>{
 })
 app.post('/delete-car',(req,res)=>{
     carList = carList.filter((car)=>{
-        return ((car.stock_num !== req.body.stock_num) || (car.make !== req.body.make) || (car.model !== req.body.model) || (car.year !== req.body.year) || (car.price !== req.body.price));
+        return ((car.url !== req.body.url) || (car.color !== req.body.color) || (car.stock_num !== req.body.stock_num) || (car.make !== req.body.make) || (car.model !== req.body.model) || (car.year !== req.body.year) || (car.price !== req.body.price));
     });
     const carJSON = JSON.stringify(carList);
     fs.writeFile(__dirname+"/public/data/data10.json", carJSON,

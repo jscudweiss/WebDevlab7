@@ -28,15 +28,14 @@
 </section>
 <section id="controls">
     <div class="d-flex justify-content-end" style="padding-top: 20px">
-        <a href="new_car.html" class="btn btn-success">Add a new car</a>
+        <form method="get" action="/new-car">
+            <a type="submit" class="btn btn-success">Add a new car</a>
+        </form>
         <button class="btn btn-danger" id="delete_all">Delete selected cars</button>
     </div>
 </section>
 <section id="cars">
-    <div class="row">
-        <div class="col-1"></div>
-        <div id="car_list" class="col-10">
-        </div>
+    <div id="car_list">
     </div>
 </section>
 </body>

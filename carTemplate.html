@@ -28,57 +28,66 @@
         <div class="col-1"></div>
         <div id="car_list" class="col-10">
             <div class="row car_row">
-                <div class="col-4 imgDiv" style="margin-bottom: 1rem">
-                    <img src=https://img2.carmax.com/img/vehicles/19913071/1.jpg?width=800 class="card-img-top"
-                         alt="...">
+                <div class="col-4 imgDiv">
+                    <img src="https://img2.carmax.com/img/vehicles/19913071/1.jpg?width=800" alt="...">
                 </div>
-                <div class="col-8 text-div">
+                <div class="col-8 text-div" style="margin-top: 2rem">
                     <div class="row">
-                        <div class="col-6">
-                            <p class="text">Stock Number</p>
+                        <div class="col-10">
+                            <div class="row">
+                                <div class="col-6">
+                                    <p class="text">Stock Number</p>
+                                </div>
+                                <div class="col-6">
+                                    <p class="make text">${car.stock_num}</p>
+                                </div>
+                                <hr>
+                            </div>
+                            <div class="row">
+                                <div class="col-6">
+                                    <p class="text">Make</p>
+                                </div>
+                                <div class="col-6">
+                                    <p class="make text">${car.make}</p>
+                                </div>
+                                <hr>
+                            </div>
+                            <div class="row">
+                                <div class="col-6">
+                                    <p class="text">Model</p>
+                                </div>
+                                <div class="col-6">
+                                    <p class="model text">${car.model}</p>
+                                </div>
+                                <hr>
+                            </div>
+                            <div class="row">
+                                <div class="col-6">
+                                    <p class="text">Year</p>
+                                </div>
+                                <div class="col-6">
+                                    <p class="year text">${car.year}</p>
+                                </div>
+                                <hr>
+                            </div>
+                            <div class="row">
+                                <div class="col-6">
+                                    <p class="text">Price</p>
+                                </div>
+                                <div class="col-6">
+                                    <p class="price text">$${car.price}</p>
+                                </div>
+                                <hr>
+                            </div>
                         </div>
-                        <div class="col-6">
-                            <p class="make text">${car.stock_num}</p>
+                        <div class="col-2">
+                            <input type="checkbox" class="carCheck"/>
                         </div>
-                        <hr>
                     </div>
                     <div class="row">
-                        <div class="col-6">
-                            <p class="text">Make</p>
-                        </div>
-                        <div class="col-6">
-                            <p class="make text">${car.make}</p>
-                        </div>
-                        <hr>
+                        <button type="button" class="btn btn-danger btn-block delete_btn">Delete</button>
                     </div>
-                    <div class="row">
-                        <div class="col-6">
-                            <p class="text">Model</p>
-                        </div>
-                        <div class="col-6">
-                            <p class="model text">${car.model}</p>
-                        </div>
-                        <hr>
-                    </div>
-                    <div class="row">
-                        <div class="col-6">
-                            <p class="text">Year</p>
-                        </div>
-                        <div class="col-6">
-                            <p class="year text">${car.year}</p>
-                        </div>
-                        <hr>
-                    </div>
-                    <div class="row">
-                        <div class="col-6">
-                            <p class="text">Price</p>
-                        </div>
-                        <div class="col-6">
-                            <p class="price text">$${car.price}</p>
-                        </div>
-                        <hr>
-                    </div>
-                    <button type="button" class="btn btn-danger btn-block delete_btn">Delete</button>
+
                 </div>
             </div>
         </div>
