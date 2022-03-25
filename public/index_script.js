@@ -2,7 +2,7 @@ function loadCar(car) {
     return `    
     <div class="row car_row">
                 <div class="col-4 imgDiv" style="margin-bottom: 1rem">
-                    <img src=https://img2.carmax.com/img/vehicles/19913071/1.jpg?width=800 class="card-img-top"
+                    <img src=${car.url} class="card-img-top"
                          alt="...">
                 </div>
                 <div class="col-8 text-div">
@@ -58,7 +58,7 @@ function loadCar(car) {
 }
 
 
-$.getJSON("/public/data/data10.json", () => {
+$.getJSON("/data/data10.json", () => {
     console.log("file loaded");
 }).done((data) => {
     data.forEach((car) => {

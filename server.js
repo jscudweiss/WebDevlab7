@@ -13,13 +13,15 @@ node server.js
 */
 
 app.use(express.static(__dirname + "/public"));
-let carList = [];
+
 app.listen(3000, function () {
     console.log("server started at 3000");
     const rawData = fs.readFileSync(__dirname + "/public/data/data10.json");
     carList=JSON.parse(rawData);
     console.log(carList);
 });
+
+let carList = [];
 
 app.get("/", function (req, res) {
     res.sendFile("/public/index.html");
@@ -32,7 +34,7 @@ app.get("/new-car", function (req, res) {
 });
 
 app.post("/create-new-car", (req,res)=> {
-    //console.log(req.body.message);
+    //console.log(req.body.car);
     const carItem = {
         "stock_num": req.body.stock_num,
         "make": req.body.make,
@@ -42,7 +44,7 @@ app.post("/create-new-car", (req,res)=> {
         "color":req.body.color,
     }
     carList.push(carItem);
-    const carJSON = JSON.stringify(messageList);
+    const carJSON = JSON.stringify(carList);
     console.log(carJSON);
     fs.writeFile(__dirname+"/public/data/data10.json", carJSON, function (err) {
         if(err){
@@ -58,16 +60,16 @@ app.get('/create-new-car',(req,res)=>{
     res.sendFile(__dirname+"/public/index.html");
 })
 app.post('/delete-car',(req,res)=>{
-    messageList = messageList.filter((car)=>{
-        return ((car.stock_num !== req.body.stock_num) ||(car.make !== req.body.make) || (car.model !== req.body.model) || (car.year !== req.body.year) || (car.price !== req.body.price));
+    carList = carList.filter((car)=>{
+        return ((car.stock_num !== req.body.stock_num) || (car.make !== req.body.make) || (car.model !== req.body.model) || (car.year !== req.body.year) || (car.price !== req.body.price));
     });
-    const messageJSON = JSON.stringify(messageList);
-    fs.writeFile(__dirname+"/public/data/messages.json", messageJSON,
+    const carJSON = JSON.stringify(carList);
+    fs.writeFile(__dirname+"/public/data/data10.json", carJSON,
         function (err) {
             if(err){
                 console.log("Json writing failed", err);
             }else {
-                res.redirect('/index');
+                res.redirect('/');
             }
         });
 })
