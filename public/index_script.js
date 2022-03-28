@@ -53,11 +53,11 @@ function loadCar(car) {
                                 <hr>
                             </div>
                             <div class="row">
-                                <button type="button" class="btn btn-danger btn-block delete_btn">Delete</button>
+                                <button type="button" class="btn btn-danger btn-block delete_btn" value='${JSON.stringify(car)}'>Delete</button>
                             </div>
                         </div>
                         <div class="col-1">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                            <input class="form-check-input del-CheckBox" type="checkbox" value='${JSON.stringify(car)}' id="flexCheckDefault">
                         </div>
                     </div>
                 </div>
@@ -97,4 +97,24 @@ $.getJSON("/data/data10.json", () => {
                 location.reload();
             });
     })
-})
+});
+
+function delCars() {
+    $('.del-CheckBox').each(() => {
+        console.
+        if (this.checked){
+            const car = JSON.parse($(this).attr('value'));
+            console.log(car)
+            app.post($.post('/delete-car', {
+                "stock_num": car.stock_num,
+                "make": car.make,
+                "model": car.model,
+                "color": car.color,
+                "year": car.year,
+                "url": car.url,
+                "price": car.price,
+            }))
+        }
+    })
+};
+

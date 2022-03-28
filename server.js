@@ -14,19 +14,37 @@ node server.js
 
 app.use(express.static(__dirname + "/public"));
 
+app.get("/", function (req, res) {
+    res.sendFile("/public/index.html");
+    console.log()
+});
+
+app.get("/new-car", function (req, res) {
+    res.sendFile(__dirname + "/public/new_car.html");
+});
+
+app.post("/new-car", function (req, res) {
+    res.sendFile(__dirname + "/public/new_car.html");
+});
+
 app.listen(3000, function () {
     console.log("server started at 3000");
-    const rawData = fs.readFileSync(__dirname + "/public/data/data10.json");
+    const rawData = fs.readFileSync(__dirname + "/public/data/data10-copy.json");
     carList = JSON.parse(rawData);
+    fs.writeFile(__dirname + "/public/data/data10.json", rawData,
+        function (err) {
+            if (err) {
+                console.log("Json writing failed", err);
+            } else {
+                app.get('/');
+            }
+        });
     console.log(carList);
 });
 
 let carList = [];
 
-app.get("/", function (req, res) {
-    res.sendFile("/public/index.html");
-    console.log()
-});
+
 
 app.post('/delete-car', (req, res) => {
     carList = carList.filter((car) => {
@@ -43,7 +61,7 @@ app.post('/delete-car', (req, res) => {
                 res.redirect('/');
             }
         });
-})
+});
 
 app.post("/get-new-car", (req, res) => {
     //console.log(req.body.car);
@@ -67,11 +85,5 @@ app.post("/get-new-car", (req, res) => {
         }
     });
     //res.send("Thank You!");
-})
+});
 
-app.get("/new-car", function (req, res) {
-    res.sendFile(__dirname + "/public/new_car.html");
-});
-app.post("/new-car", function (req, res) {
-    res.sendFile(__dirname + "/public/new_car.html");
-});
