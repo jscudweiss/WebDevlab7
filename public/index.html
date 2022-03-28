@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <title>Used Cars</title>
@@ -28,8 +28,8 @@
 </section>
 <section id="controls">
     <div class="d-flex justify-content-end" style="padding-top: 20px">
-        <form method="get" action="/new-car">
-            <a type="submit" class="btn btn-success">Add a new car</a>
+        <form action="/new-car" method="post">
+            <input type="submit" value="Add a new car" class="btn btn-success">
         </form>
         <button class="btn btn-danger" id="delete_all">Delete selected cars</button>
     </div>

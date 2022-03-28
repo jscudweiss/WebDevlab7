@@ -22,3 +22,16 @@
     padding: 5%;
     border-radius: 30px;
 }
+
+#flexCheckDefault{
+    width: 2rem;
+    height: 2rem;
+}
+
+.InputClass{
+    width: 98%;
+}
+
+#InputForm{
+    margin-left: 1rem;
+}
