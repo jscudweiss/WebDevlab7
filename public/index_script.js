@@ -100,21 +100,20 @@ $.getJSON("/data/data10.json", () => {
 });
 
 function delCars() {
-    $('.del-CheckBox').each(() => {
-        console.
-        if (this.checked){
-            const car = JSON.parse($(this).attr('value'));
-            console.log(car)
-            app.post($.post('/delete-car', {
-                "stock_num": car.stock_num,
-                "make": car.make,
-                "model": car.model,
-                "color": car.color,
-                "year": car.year,
-                "url": car.url,
-                "price": car.price,
-            }))
-        }
+    $(':checked').each(() => {
+        console.log(this)
+        console.log(this.val)
+        const car = JSON.parse(this.val);
+        console.log(car)
+        app.post($.post('/delete-car', {
+            "stock_num": car.stock_num,
+            "make": car.make,
+            "model": car.model,
+            "color": car.color,
+            "year": car.year,
+            "url": car.url,
+            "price": car.price,
+        }))
     })
 };
 
