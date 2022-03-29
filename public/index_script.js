@@ -57,7 +57,7 @@ function loadCar(car) {
                             </div>
                         </div>
                         <div class="col-1">
-                            <input class="form-check-input del-CheckBox" type="checkbox" value='${JSON.stringify(car)}' id="flexCheckDefault">
+                            <input class="form-check-input" type="checkbox" value='${JSON.stringify(car)}' id="flexCheckDefault" name="del-Checkbox" form="delCheck">
                         </div>
                     </div>
                 </div>
@@ -99,21 +99,16 @@ $.getJSON("/data/data10.json", () => {
     })
 });
 
-function delCars() {
-    $(':checked').each(() => {
-        console.log(this)
-        console.log(this.val)
-        const car = JSON.parse(this.val);
-        console.log(car)
-        app.post($.post('/delete-car', {
-            "stock_num": car.stock_num,
-            "make": car.make,
-            "model": car.model,
-            "color": car.color,
-            "year": car.year,
-            "url": car.url,
-            "price": car.price,
-        }))
-    })
-};
+let carsDel = [];
 
+function delete_all() {
+    carsDel = [];
+    $("input:checkbox[name='del-Checkbox']:checked").each(function () {
+        carsDel.push($(this).val());
+    });
+    $.post('/delete-all', {
+        "carList": carsDel,
+    }).done(() => {
+        location.reload();
+    });
+}

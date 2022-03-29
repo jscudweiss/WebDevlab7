@@ -31,8 +31,9 @@
         <form action="/new-car" method="post">
             <input type="submit" value="Add a new car" class="btn btn-success">
         </form>
-        <button onclick='delCars()' class="btn btn-danger" id="delete_all">Delete selected cars</button>
-
+        <form id="Delete_form" onsubmit="delete_all()" name="delCheck">
+            <input type="submit" value="Delete selected cars" class="btn btn-danger">
+        </form>
     </div>
 </section>
 <section id="cars">
