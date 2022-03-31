@@ -63,7 +63,7 @@ app.post('/delete-car', (req, res) => {
 });
 
 app.post("/get-new-car", (req, res) => {
-    //console.log(req.body.car);
+    console.log(req.body.stock_num);
     const carItem = {
         "stock_num": req.body.stock_num,
         "make": req.body.make,

@@ -39,29 +39,28 @@
         </div>
     </nav>
 </section>
-<div class="input-group mb-3 row" id = "InputForm">
+<div class="input-group mb-3 row" id="InputForm">
     <div class="col-12">
-        <form action="/get-new-car" method="post">
-            <br>
-            <label for="stock_num">Stock Number:</label><br>
-            <input id="stock_num" type="number" name="stock_num" value="" required="required" class="InputClass"><br>
-            <label for="make">Make:</label><br>
-            <input id="make" type="text" name="make" value="" required="required" class="InputClass"><br>
-            <label for="model">Model:</label><br>
-            <input id="model" type="text" name="model" value="" required="required" class="InputClass"><br>
-            <label for="year">Year:</label><br>
-            <input id="year" type="number" name="year" value="" required="required"><br>
-            <label for="color">Color:</label><br>
-            <input id="color" type="text" name="color" value="" required="required" class="InputClass"><br>
-            <label for="url">Image Url:</label><br>
-            <input id="url" type="text" name="url" value="" required="required" class="InputClass"><br>
-            <label for="price">Price:</label><br>
-            <input id="price" type="number" name="price" value="" required="required" class="InputClass">
-            <br>
-            <br>
-            <input type="submit" value="Submit">
+        <br>
+        <label for="stock_num">Stock Number:</label><br>
+        <input id="stock_num" type="number" name="stock_num" value="" class="InputClass"><br>
+        <label for="make">Make:</label><br>
+        <input id="make" type="text" name="make" value="" class="InputClass"><br>
+        <label for="model">Model:</label><br>
+        <input id="model" type="text" name="model" value="" class="InputClass"><br>
+        <label for="year">Year:</label><br>
+        <input id="year" type="number" name="year" value=""><br>
+        <label for="color">Color:</label><br>
+        <input id="color" type="text" name="color" value="" class="InputClass"><br>
+        <label for="url">Image Url:</label><br>
+        <input id="url" type="text" name="url" value="" class="InputClass"><br>
+        <label for="price">Price:</label><br>
+        <input id="price" type="number" name="price" value="" class="InputClass">
+        <br>
+        <label id="alert_New_Car" style="color: red"></label>
+        <br>
+        <button type="button" class="btn btn-secondary" onclick="newCar()">Submit</button>
 
-        </form>
     </div>
 </div>
 
