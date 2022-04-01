@@ -15,8 +15,13 @@ node server.js
 app.use(express.static(__dirname + "/public"));
 
 app.get("/", function (req, res) {
-    res.sendFile("/public/index.html");
-    console.log()
+    res.sendFile(__dirname + "/public/index.html");
+    console.log();
+});
+
+app.post("/", function (req, res) {
+    res.sendFile(__dirname + "/public/index.html");
+    console.log();
 });
 
 app.get("/new-car", function (req, res) {
@@ -63,7 +68,6 @@ app.post('/delete-car', (req, res) => {
 });
 
 app.post("/get-new-car", (req, res) => {
-    console.log(req.body.stock_num);
     const carItem = {
         "stock_num": req.body.stock_num,
         "make": req.body.make,
@@ -73,6 +77,7 @@ app.post("/get-new-car", (req, res) => {
         "color": req.body.color,
         "price": parseInt(req.body.price),
     }
+    console.log(carItem);
     carList = carList.filter((car) => {
         //console.log(carItem.stock_num !== car.stock_num);
         return (carItem.stock_num !== car.stock_num);

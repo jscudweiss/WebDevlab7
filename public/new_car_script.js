@@ -32,9 +32,10 @@ function newCar() {
         return;
     }
     if (price.length < 1) {
-        document.getElementById("alert_New_Car").innerText = "stockNum must not be empty";
+        document.getElementById("alert_New_Car").innerText = "Price must not be empty";
         return;
     }
+    document.getElementById("alert_New_Car").innerText = "";
     $.post("/get-new-car",
         {
             "stock_num": stock_num,
@@ -44,5 +45,7 @@ function newCar() {
             "color": color,
             "url": url,
             "price": price,
-        })
+        }).done(() => {
+        location.href = ('/');
+        });
 }
